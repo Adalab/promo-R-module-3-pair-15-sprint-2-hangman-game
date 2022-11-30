@@ -9,6 +9,8 @@ import getWordFromApi from '../services/api';
 // styles
 import '../styles/App.scss';
 import '../styles/Form.scss';
+import ErrorLetters from './ErrorLetters';
+import Form from './Form';
 
 
 function App() {
@@ -47,21 +49,7 @@ function App() {
     return errorLetters.length;
   };
 
-
-
-  const renderErrorLetters = () => {
-    const errorLetters = userLetters.filter(
-      (letter) =>
-        word.toLocaleLowerCase().includes(letter.toLocaleLowerCase()) === false
-    );
-    return errorLetters.map((letter, index) => {
-      return (
-        <li key={index} className='letter'>
-          {letter}
-        </li>
-      );
-    });
-  };
+  <ErrorLetters word={word} userLetters={userLetters}></ErrorLetters>
 
   const handleLastLetter = (value) => {
     value = value.toLocaleLowerCase();
@@ -81,9 +69,10 @@ function App() {
           <SolutionLetters word={word}  userLetters={userLetters}/>
           <div className='error'>
             <h2 className='title'>Letras falladas:</h2>
-            <ul className='letters'>{renderErrorLetters()}</ul>
+            <ul className='letters'><ErrorLetters  word={word} userLetters={userLetters}/></ul>
           </div>
-          <form className='form' onSubmit={handleSubmit}>
+          <Form lastLetter={lastLetter} handleSubmit={handleSubmit} handleKeyDown={handleKeyDown} handleChange={handleChange}/>
+          {/* <form className='form' onSubmit={handleSubmit}>
             <label className='title' htmlFor='last-letter'>
               Escribe una letra:
             </label>
@@ -99,7 +88,7 @@ function App() {
               onKeyDown={handleKeyDown}
               onChange={handleChange}
             />
-          </form>
+          </form> */}
         </section>
         <Dummy numberOfErrors={getNumberOfErrors()}/>
       </main>
