@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import {Route} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 // components
 import Header from './Header';
 import Dummy from './Dummy';
 import SolutionLetters from './SolutionLetters';
+import Footer from './Footer';
 
 // api
 import getWordFromApi from '../services/api';
@@ -72,6 +75,10 @@ function App() {
         </section>
         <Dummy numberOfErrors={getNumberOfErrors()}/>
       </main>
+      <NavLink to="/faq"
+  //</div>className={isActive =>
+    "nav-link" + (!isActive ? " unselected" : "" > <Footer/> </NavLink>
+      
     </div>
 
   );
