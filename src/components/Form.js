@@ -1,7 +1,14 @@
 const Form = (props) => {
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+  };
+  const handleKeyDown = (ev) => {
+    // Sabrías decir para qué es esta línea
+    ev.target.setSelectionRange(0, 1);
+  };
 
     return (
-        <form className='form' onSubmit={props.handleSubmit(props.ev)}>
+        <form className='form' onSubmit={handleSubmit}>
             <label className='title' htmlFor='last-letter'>
               Escribe una letra:
             </label>
@@ -14,8 +21,10 @@ const Form = (props) => {
               name='last-letter'
               id='last-letter'
               value={props.lastLetter}
-              onKeyDown={props.handleKeyDown(props.ev)}
-              onChange={props.handleChange(props.ev)}
+              onKeyDown={handleKeyDown}
+              onChange={ (ev)=> {
+                props.handleChange(ev.target.value)
+              }}
             />
           </form>
     )
