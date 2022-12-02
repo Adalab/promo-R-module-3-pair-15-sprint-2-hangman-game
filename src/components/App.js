@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import {Route} from 'react-router-dom';
-import {NavLink} from 'react-router-dom';
+// import {Route, Routes} from 'react-router-dom';
+
 // components
 import Header from './Header';
 import Dummy from './Dummy';
@@ -75,13 +75,9 @@ function App() {
         </section>
         <Dummy numberOfErrors={getNumberOfErrors()}/>
       </main>
-      <NavLink to="/faq"
-  //</div>className={isActive =>
-    "nav-link" + (!isActive ? " unselected" : "" > <Footer/> </NavLink>
-      
+      <Footer/>
     </div>
-
-  );
+  )
 }
 
 export default App;
